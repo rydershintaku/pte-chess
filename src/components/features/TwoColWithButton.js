@@ -4,7 +4,6 @@ import styled from "styled-components";
 import { css } from "styled-components/macro"; //eslint-disable-line
 import { SectionHeading, Subheading as SubheadingBase } from "components/misc/Headings.js";
 import { PrimaryButton as PrimaryButtonBase } from "components/misc/Buttons.js";
-import TeamIllustrationSrc from "images/team-illustration-2.svg";
 import chessboard from "images/chessboard.png"
 import {ReactComponent as SvgDotPattern } from "images/dot-pattern.svg"
 
@@ -42,6 +41,7 @@ const PrimaryButton = styled(PrimaryButtonBase)(props => [
 
 
 export default ({
+
   subheading = "Our Expertise",
   heading = (
     <>
