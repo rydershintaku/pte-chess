@@ -34,6 +34,7 @@ const TextColumn = styled(Column)(props => [
 const Row = tw.div`flex`;
 const NavRow = tw(Row)`flex flex-col lg:flex-row items-center justify-between`;
 const NavLink = tw.a`mt-4 lg:mt-0 transition duration-300 font-medium pb-1 border-b-2 mr-12 text-gray-700 border-gray-400 hocus:border-gray-700`;
+const Nav2 = tw.a`mt-4 lg:mt-0 transition duration-300 font-medium pb-1 border-b-2 mr-12 text-gray-700 border-gray-400 hocus:border-gray-700 pointer-events-none`;
 const PrimaryNavLink = tw(
   NavLink
 )`text-gray-100 bg-primary-500 px-6 py-3 border-none rounded hocus:bg-primary-900 focus:shadow-outline mt-6 md:mt-4 lg:mt-0`;
@@ -54,7 +55,6 @@ const Subheading = tw(SubheadingBase)`text-center md:text-left`;
 const Heading = tw(
   SectionHeading
 )`mt-4 font-black text-left text-2xl sm:text-3xl lg:text-2xl text-center md:text-left leading-tight`;
-const Description = tw.p`mt-4 text-center md:text-left text-sm md:text-base lg:text-lg font-medium leading-relaxed text-secondary-100`;
 
 const PrimaryButton = styled(PrimaryButtonBase)(props => [
   tw`mt-8 md:mt-8 text-sm inline-block mx-auto md:mx-0`,
@@ -64,13 +64,11 @@ const PrimaryButton = styled(PrimaryButtonBase)(props => [
 
 export default ({
                   submitButtonText = "Send", formAction = "#", formMethod = "get",
-  subheading = "Our Expertise",
   heading = (
     <>
       You are currently playing for against <span tw="text-primary-500"> XxYasuoMainxX </span> for <span tw="text-primary-500">.034 ETH.</span>
     </>
   ),
-  description = "Lorem",
   user1 = "TheBestEver",
   user2 = "XxYasuoMainxX",
   primaryButtonText = "Resign",
@@ -98,6 +96,9 @@ export default ({
           P-2-E Chess
         </LogoLink>
         <div tw="flex flex-wrap justify-center lg:justify-end items-center -mr-12">
+          <Nav2 target="_blank" href="http://localhost:3000/components/blocks/FAQS/SingleCol">
+            0.0001 ETH
+          </Nav2>
           <NavLink target="_blank" href="http://localhost:3000/components/blocks/FAQS/SingleCol">
             Profile
           </NavLink>

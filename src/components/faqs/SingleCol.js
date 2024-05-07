@@ -22,9 +22,9 @@ const NavLink = tw.a`mt-4 lg:mt-0 transition duration-300 font-medium pb-1 borde
 const PrimaryNavLink = tw(
   NavLink
 )`text-gray-100 bg-primary-500 px-6 py-3 border-none rounded hocus:bg-primary-900 focus:shadow-outline mt-6 md:mt-4 lg:mt-0`;
-const Subheading = tw(SubheadingBase)`mb-4 text-center`;
 const Heading = tw(SectionHeading)`w-full`;
 const Description = tw(SectionDescription)`w-full text-center`;
+const Nav2 = tw.a`mt-4 lg:mt-0 transition duration-300 font-medium pb-1 border-b-2 mr-12 text-gray-700 border-gray-400 hocus:border-gray-700 pointer-events-none`;
 
 const Column = tw.div`flex flex-col items-center`;
 const HeaderContent = tw.div``;
@@ -52,7 +52,6 @@ const DecoratorBlob2 = styled(SvgDecoratorBlob2)`
 
 
 export default ({
-  subheading = "FAQS",
   heading = "Your Profile",
   description = "Match History",
                   submitButtonText = "Withdraw", formAction1 = "#1", formMethod4 = "get4",
@@ -86,6 +85,9 @@ export default ({
           P-2-E Chess
         </LogoLink>
         <div tw="flex flex-wrap justify-center lg:justify-end items-center -mr-12">
+          <Nav2 target="_blank" href="http://localhost:3000/components/blocks/FAQS/SingleCol">
+            0.0001 ETH
+          </Nav2>
           <NavLink target="_blank" href="http://localhost:3000/components/blocks/Features/TwoColWithButton">
             Play
           </NavLink>

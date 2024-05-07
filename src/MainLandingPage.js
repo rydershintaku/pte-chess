@@ -26,6 +26,8 @@ import useInView from "helpers/useInView";
 const Row = tw.div`flex`;
 const NavRow = tw(Row)`flex flex-col lg:flex-row items-center justify-between`;
 const NavLink = tw.a`mt-4 lg:mt-0 transition duration-300 font-medium pb-1 border-b-2 mr-12 text-gray-700 border-gray-400 hocus:border-gray-700`;
+const Nav2 = tw.a`mt-4 lg:mt-0 transition duration-300 font-medium pb-1 border-b-2 mr-12 text-gray-700 border-gray-400 hocus:border-gray-700 pointer-events-none`;
+
 const PrimaryNavLink = tw(
   NavLink
 )`text-gray-100 bg-primary-500 px-6 py-3 border-none rounded hocus:bg-primary-900 focus:shadow-outline mt-6 md:mt-4 lg:mt-0`;
@@ -140,6 +142,9 @@ export default ({
               P-2-E Chess
             </LogoLink>
             <div tw="flex flex-wrap justify-center lg:justify-end items-center -mr-12">
+              <Nav2 target="_blank" href="http://localhost:3000/components/blocks/FAQS/SingleCol">
+                0.0001 ETH
+              </Nav2>
               <NavLink target="_blank" href="http://localhost:3000/components/blocks/FAQS/SingleCol">
                 Profile
               </NavLink>
