@@ -5,7 +5,13 @@ import { css } from "styled-components/macro"; //eslint-disable-line
 import { SectionHeading, Subheading as SubheadingBase } from "components/misc/Headings.js";
 import { PrimaryButton as PrimaryButtonBase } from "components/misc/Buttons.js";
 import chessboard from "images/chessboard.png"
+import cat from "images/cat.png"
+import hotDog from "images/hot dog.png"
 import {ReactComponent as SvgDotPattern } from "images/dot-pattern.svg"
+import SimpleFiveColumn from '../footers/SimpleFiveColumn';
+import { LogoLink } from '../headers/light';
+import chessHorse from '../../images/chess-horse.svg';
+
 
 const Container = tw.div`relative`;
 const TwoColumn = tw.div`flex flex-col md:flex-row justify-between max-w-screen-xl mx-auto py-20 md:py-24 items-center`;
@@ -15,6 +21,12 @@ const TextColumn = styled(Column)(props => [
   tw`md:w-6/12 mt-16 md:mt-0`,
   props.textOnLeft ? tw`md:mr-12 lg:mr-16 md:order-first` : tw`md:ml-12 lg:ml-16 md:order-last`
 ]);
+const Row = tw.div`flex`;
+const NavRow = tw(Row)`flex flex-col lg:flex-row items-center justify-between`;
+const NavLink = tw.a`mt-4 lg:mt-0 transition duration-300 font-medium pb-1 border-b-2 mr-12 text-gray-700 border-gray-400 hocus:border-gray-700`;
+const PrimaryNavLink = tw(
+  NavLink
+)`text-gray-100 bg-primary-500 px-6 py-3 border-none rounded hocus:bg-primary-900 focus:shadow-outline mt-6 md:mt-4 lg:mt-0`;
 
 const Image = styled.img(props => [
   props.imageRounded && tw`rounded`,
@@ -31,7 +43,7 @@ const TextContent = tw.div`lg:py-8 text-center md:text-left`;
 const Subheading = tw(SubheadingBase)`text-center md:text-left`;
 const Heading = tw(
   SectionHeading
-)`mt-4 font-black text-left text-3xl sm:text-4xl lg:text-5xl text-center md:text-left leading-tight`;
+)`mt-4 font-black text-left text-2xl sm:text-4xl lg:text-3xl text-center md:text-left leading-tight`;
 const Description = tw.p`mt-4 text-center md:text-left text-sm md:text-base lg:text-lg font-medium leading-relaxed text-secondary-100`;
 
 const PrimaryButton = styled(PrimaryButtonBase)(props => [
@@ -45,13 +57,18 @@ export default ({
   subheading = "Our Expertise",
   heading = (
     <>
-      You are currently playing for <span tw="text-primary-500">.034 ETH.</span>
+      You are currently playing for against <span tw="text-primary-500"> XxYasuoMainxX </span> for <span tw="text-primary-500">.034 ETH.</span>
     </>
   ),
   description = "Lorem",
+  user1 = "TheBestEver",
+  user2 = "XxYasuoMainxX",
   primaryButtonText = "Resign",
+  secondaryButtonText = "Draw",
   primaryButtonUrl = "https://timerse.com",
   imageSrc = chessboard,
+  dogSrc = hotDog,
+  catSrc = cat,
   buttonRounded = true,
   imageRounded = true,
   imageBorder = false,
@@ -65,22 +82,49 @@ export default ({
 
   return (
     <Container>
+      <NavRow>
+        <LogoLink href="/">
+          <img src={chessHorse} alt="" />
+          P-2-E Chess
+        </LogoLink>
+        <div tw="flex flex-wrap justify-center lg:justify-end items-center -mr-12">
+          <NavLink target="_blank" href="https://owaiskhan.me">
+            Profile
+          </NavLink>
+          <div tw="md:hidden flex-100 h-0"></div>
+          <PrimaryNavLink target="_blank" href="https://gum.co/QaruQ">
+            Return Home
+          </PrimaryNavLink>
+        </div>
+      </NavRow>
       <TwoColumn>
-        <ImageColumn>
-          <Image css={imageCss} src={imageSrc} imageBorder={imageBorder} imageShadow={imageShadow} imageRounded={imageRounded}/>
-          {imageDecoratorBlob && <DecoratorBlob css={imageDecoratorBlobCss} />}
-        </ImageColumn>
+        <div className="image-container">
+          <div style={{ display: 'flex', alignItems: 'stretch' }}>
+            <Image style={{ backgroundColor: 'black', height: 50, width: 50 }} css={imageCss} src={catSrc}></Image>
+          <Subheading style={{ marginLeft: '10px' }}>{user1}</Subheading>
+          </div>
+          <ImageColumn>
+            <Image  css={imageCss} src={imageSrc} imageBorder={imageBorder} imageShadow={imageShadow} imageRounded={imageRounded}/>
+            {imageDecoratorBlob && <DecoratorBlob css={imageDecoratorBlobCss} />}
+          </ImageColumn>
+          <div style={{ display: 'flex', alignItems: 'stretch' }}>
+          <Image style={{ backgroundColor: 'black', height: 50, width: 50 }} css={imageCss} src={dogSrc}></Image>
+          <Subheading style={{ marginLeft: '10px', marginTop: '25px' }}>{user2}</Subheading>
+          </div>
+        </div>
         <TextColumn textOnLeft={textOnLeft}>
           <TextContent>
-            <Subheading>{subheading}</Subheading>
             <Heading>{heading}</Heading>
-            <Description>{description}</Description>
             <PrimaryButton buttonRounded={buttonRounded} as="a" href={primaryButtonUrl}>
               {primaryButtonText}
+            </PrimaryButton>
+            <PrimaryButton buttonRounded={buttonRounded} as="a" href={primaryButtonUrl} style={{ marginLeft: '50px' }}>
+              {secondaryButtonText}
             </PrimaryButton>
           </TextContent>
         </TextColumn>
       </TwoColumn>
+      <SimpleFiveColumn/>
     </Container>
   );
 };
