@@ -4,13 +4,23 @@ import styled from "styled-components";
 import { css } from "styled-components/macro"; //eslint-disable-line
 import { SectionHeading, Subheading as SubheadingBase } from "components/misc/Headings.js";
 import { PrimaryButton as PrimaryButtonBase } from "components/misc/Buttons.js";
-import chessboard from "images/chessboard.png"
 import cat from "images/cat.png"
 import hotDog from "images/hot dog.png"
 import {ReactComponent as SvgDotPattern } from "images/dot-pattern.svg"
 import SimpleFiveColumn from '../footers/SimpleFiveColumn';
 import { LogoLink } from '../headers/light';
 import chessHorse from '../../images/chess-horse.svg';
+import chessboardInProgress from "images/chessBoardInProgress.jpg"
+
+
+const Form = tw.form`mt-8 md:mt-10 text-sm flex flex-col max-w-sm mx-auto md:mx-0`
+const Input = tw.input`mt-6 first:mt-0 border-b-2 py-3 focus:outline-none font-medium transition duration-300 hocus:border-primary-500`
+const Textarea = styled(Input).attrs({as: "textarea"})`
+  ${tw`h-24`}
+`
+
+const SubmitButton = tw(PrimaryButtonBase)`inline-block mt-8`
+
 
 
 const Container = tw.div`relative`;
@@ -43,7 +53,7 @@ const TextContent = tw.div`lg:py-8 text-center md:text-left`;
 const Subheading = tw(SubheadingBase)`text-center md:text-left`;
 const Heading = tw(
   SectionHeading
-)`mt-4 font-black text-left text-2xl sm:text-4xl lg:text-3xl text-center md:text-left leading-tight`;
+)`mt-4 font-black text-left text-2xl sm:text-3xl lg:text-2xl text-center md:text-left leading-tight`;
 const Description = tw.p`mt-4 text-center md:text-left text-sm md:text-base lg:text-lg font-medium leading-relaxed text-secondary-100`;
 
 const PrimaryButton = styled(PrimaryButtonBase)(props => [
@@ -53,7 +63,7 @@ const PrimaryButton = styled(PrimaryButtonBase)(props => [
 
 
 export default ({
-
+                  submitButtonText = "Send", formAction = "#", formMethod = "get",
   subheading = "Our Expertise",
   heading = (
     <>
@@ -66,7 +76,7 @@ export default ({
   primaryButtonText = "Resign",
   secondaryButtonText = "Draw",
   primaryButtonUrl = "https://timerse.com",
-  imageSrc = chessboard,
+  imageSrc = chessboardInProgress,
   dogSrc = hotDog,
   catSrc = cat,
   buttonRounded = true,
@@ -88,11 +98,11 @@ export default ({
           P-2-E Chess
         </LogoLink>
         <div tw="flex flex-wrap justify-center lg:justify-end items-center -mr-12">
-          <NavLink target="_blank" href="https://owaiskhan.me">
+          <NavLink target="_blank" href="http://localhost:3000/components/blocks/FAQS/SingleCol">
             Profile
           </NavLink>
           <div tw="md:hidden flex-100 h-0"></div>
-          <PrimaryNavLink target="_blank" href="https://gum.co/QaruQ">
+          <PrimaryNavLink target="_blank" href="http://localhost:3000/">
             Return Home
           </PrimaryNavLink>
         </div>
@@ -110,11 +120,22 @@ export default ({
           <div style={{ display: 'flex', alignItems: 'stretch' }}>
           <Image style={{ backgroundColor: 'black', height: 50, width: 50 }} css={imageCss} src={dogSrc}></Image>
           <Subheading style={{ marginLeft: '10px', marginTop: '25px' }}>{user2}</Subheading>
+            <Heading style={{ marginLeft: '135px', marginTop: '25px' }}>1:19</Heading>
           </div>
         </div>
         <TextColumn textOnLeft={textOnLeft}>
           <TextContent>
             <Heading>{heading}</Heading>
+
+            <TextColumn textOnLeft={textOnLeft}>
+              <TextContent>
+                <Form action={formAction} method={formMethod}>
+                  <Textarea name="message" placeholder="Send Your Message Here" />
+                  <SubmitButton type="submit">{submitButtonText}</SubmitButton>
+                </Form>
+              </TextContent>
+            </TextColumn>
+
             <PrimaryButton buttonRounded={buttonRounded} as="a" href={primaryButtonUrl}>
               {primaryButtonText}
             </PrimaryButton>
@@ -123,6 +144,7 @@ export default ({
             </PrimaryButton>
           </TextContent>
         </TextColumn>
+        <Textarea style={{height: 400, width: 400 }} name="message" placeholder="You and Your Opponent's Messages Appear Here" />
       </TwoColumn>
       <SimpleFiveColumn/>
     </Container>

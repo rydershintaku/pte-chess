@@ -16,6 +16,7 @@ import { ReactComponent as CheckboxIcon } from "feather-icons/dist/icons/check-c
 import { ReactComponent as RadioIcon } from "feather-icons/dist/icons/radio.svg";
 import { ReactComponent as HandleIcon } from "images/handle-icon.svg";
 import { ReactComponent as ArrowRightIcon } from "images/arrow-right-3-icon.svg";
+import SimpleFiveColumn from './components/footers/SimpleFiveColumn';
 
 import neonChess from "images/neonChess800.png"
 import chessHorse from "images/chess-horse.svg";
@@ -139,11 +140,11 @@ export default ({
               P-2-E Chess
             </LogoLink>
             <div tw="flex flex-wrap justify-center lg:justify-end items-center -mr-12">
-              <NavLink target="_blank" href="https://owaiskhan.me">
+              <NavLink target="_blank" href="http://localhost:3000/components/blocks/FAQS/SingleCol">
                 Profile
               </NavLink>
               <div tw="md:hidden flex-100 h-0"></div>
-              <PrimaryNavLink target="_blank" href="https://gum.co/QaruQ">
+              <PrimaryNavLink target="_blank" href="http://localhost:3000/components/blocks/Features/TwoColWithButton">
                 Play
               </PrimaryNavLink>
             </div>
@@ -177,66 +178,8 @@ export default ({
               </ImageContainer>
             </ImageColumn>
           </HeroRow>
-          <SectionContainer id="landingPageDemos">
-            <SectionHeading>Landing Pages</SectionHeading>
-            <SectionDescription>
-              We have {noOfLandingPages} premade landing pages. Click on the "View Live Demo" button to see them in
-              action. Customizing or Creating your own custom landing page is really simple by using our UI components.
-            </SectionDescription>
-            <PreviewCards>
-              {Object.entries(landingPages).map(([pageName, page], index) => (
-                <PreviewCardContainer key={index}>
-                  <PreviewCard initial="rest" animate="rest" whileHover="hover" href={page.url} target="_blank">
-                    <PreviewCardImageContainer>
-                      <PreviewCardImage
-                        transition={{ type: "tween" }}
-                        variants={previewImageAnimationVariants}
-                        $imageSrc={page.imageSrc}
-                      />
-                    </PreviewCardImageContainer>
-                    <PreviewButton>View Live Demo</PreviewButton>
-                  </PreviewCard>
-                </PreviewCardContainer>
-              ))}
-            </PreviewCards>
-          </SectionContainer>
-          <SectionContainer>
-            <SectionHeading>Inner Pages</SectionHeading>
-            <SectionDescription>
-              We also provide {noOfInnerPages} additional inner pages for your various needs like a signup, login,
-              pricing, about us, contact, blog etc. To view them in action click the "View Live Demo" button.
-            </SectionDescription>
-            <PreviewCards>
-              {Object.entries(innerPages).map(([pageName, page], index) => (
-                <PreviewCardContainer key={index}>
-                  <PreviewCard initial="rest" animate="rest" whileHover="hover" href={page.url} target="_blank">
-                    <PreviewCardImageContainer>
-                      <PreviewCardImage
-                        transition={{ type: "tween" }}
-                        variants={!page.scrollAnimationDisabled && previewImageAnimationVariants}
-                        $imageSrc={page.imageSrc}
-                      />
-                    </PreviewCardImageContainer>
-                    <PreviewButton>View Live Demo</PreviewButton>
-                  </PreviewCard>
-                </PreviewCardContainer>
-              ))}
-            </PreviewCards>
-          </SectionContainer>
-
-          <SectionContainer id="componentDemos">
-            <SectionHeading>Component Blocks</SectionHeading>
-            <SectionDescription>
-              We also provide {noOfComponentBlocks} components along with the premade landing pages so you can create
-              your own landing page within minutes as you see fit. You can combine these components to create 1000s of
-              unique attractive web pages.
-              <span tw="block text-sm text-gray-500 mt-2">
-                (Preview Panel below inspired by Tailwind UI)
-              </span>
-            </SectionDescription>
-            <BlocksRenderer blocks={Object.values(blocks)} />
-          </SectionContainer>
         </Content2Xl>
+        <SimpleFiveColumn/>
       </Container>
     </AnimationRevealPage>
   );

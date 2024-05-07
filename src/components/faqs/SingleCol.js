@@ -9,7 +9,17 @@ import { Container, ContentWithPaddingXl } from "components/misc/Layouts.js";
 import { ReactComponent as ChevronDownIcon } from "feather-icons/dist/icons/chevron-down.svg";
 import { ReactComponent as SvgDecoratorBlob1 } from "images/svg-decorator-blob-7.svg";
 import { ReactComponent as SvgDecoratorBlob2 } from "images/svg-decorator-blob-8.svg";
+import Tables from '../forms/Tables';
+import { LogoLink } from '../headers/light';
+import chessHorse from '../../images/chess-horse.svg';
+import SimpleFiveColumn from '../footers/SimpleFiveColumn';
 
+const Row = tw.div`flex`;
+const NavRow = tw(Row)`flex flex-col lg:flex-row items-center justify-between`;
+const NavLink = tw.a`mt-4 lg:mt-0 transition duration-300 font-medium pb-1 border-b-2 mr-12 text-gray-700 border-gray-400 hocus:border-gray-700`;
+const PrimaryNavLink = tw(
+  NavLink
+)`text-gray-100 bg-primary-500 px-6 py-3 border-none rounded hocus:bg-primary-900 focus:shadow-outline mt-6 md:mt-4 lg:mt-0`;
 const Subheading = tw(SubheadingBase)`mb-4 text-center`;
 const Heading = tw(SectionHeading)`w-full`;
 const Description = tw(SectionDescription)`w-full text-center`;
@@ -40,29 +50,19 @@ const DecoratorBlob2 = styled(SvgDecoratorBlob2)`
 
 export default ({
   subheading = "FAQS",
-  heading = "You have Questions ?",
-  description = "And we have got answers to all of them. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+  heading = "Your Profile",
+  description = "Match History",
   faqs = [
     {
-      question: "Is lunch provided free of cost ?",
+      question: "What is my total win/loss record?",
       answer:
-        "Yes, it is, if you have a membership with us. Otherwise it is charged as per the menu. Some limits do apply as to how much items can be included in your lunch. This limit is enough for any one person and merely exists to discourage abusal of the system."
+        "You have 9 wins and 100 losses for a total of 109 games played on P-2-E Chess"
     },
     {
-      question: "Do you have 2 Bedroom suites ?",
+      question: "What is my public address?",
       answer:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+        "0xb794f5ea0ba39494ce839613fffba74279579268"
     },
-    {
-      question: "Are Wi-Fi costs included in the price ?",
-      answer:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
-    },
-    {
-      question: "Where can I reach you for support ?",
-      answer:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
-    }
   ]
 }) => {
   const [activeQuestionIndex, setActiveQuestionIndex] = useState(null);
@@ -74,12 +74,27 @@ export default ({
 
   return (
     <Container>
+      <NavRow>
+        <LogoLink href="/">
+          <img src={chessHorse} alt="" />
+          P-2-E Chess
+        </LogoLink>
+        <div tw="flex flex-wrap justify-center lg:justify-end items-center -mr-12">
+          <NavLink target="_blank" href="http://localhost:3000/components/blocks/Features/TwoColWithButton">
+            Play
+          </NavLink>
+          <div tw="md:hidden flex-100 h-0"></div>
+          <PrimaryNavLink target="_blank" href="http://localhost:3000/">
+            Return Home
+          </PrimaryNavLink>
+        </div>
+      </NavRow>
       <ContentWithPaddingXl>
         <Column>
           <HeaderContent>
-            {subheading && <Subheading>{subheading}</Subheading>}
             <Heading>{heading}</Heading>
-            {description && <Description>{description}</Description>}
+            {description && <Description style={{ marginLeft: '60px', }}>{description}</Description>}
+            <Tables/>
           </HeaderContent>
           <FAQSContainer>
             {faqs.map((faq, index) => (
@@ -122,6 +137,7 @@ export default ({
       </ContentWithPaddingXl>
       <DecoratorBlob1/>
       <DecoratorBlob2 />
+      <SimpleFiveColumn/>
     </Container>
   );
 };
