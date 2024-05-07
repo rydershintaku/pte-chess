@@ -10,6 +10,7 @@ const data = [
     },
     amount: '.009 ETH',
     Total: '+0.018 ETH',
+    Date: '5/5/2024',
   },
   {
     name: {
@@ -18,6 +19,7 @@ const data = [
     },
     amount: '.000000003 ETH',
     Total: '+.000000006 ETH',
+    Date: '5/5/2024',
   },
   {
     name: {
@@ -26,6 +28,7 @@ const data = [
     },
     amount: '.00004 ETH',
     Total: '+.00008 ETH',
+    Date: '5/5/2024',
   },
   {
     name: {
@@ -34,6 +37,7 @@ const data = [
     },
     amount: '1 ETH',
     Total: '-2 ETH',
+    Date: '5/4/2024',
   },
   {
     name: {
@@ -42,6 +46,7 @@ const data = [
     },
     amount: '1 ETH',
     Total: '-2 ETH',
+    Date: '5/4/2024',
   },
 ];
 
@@ -64,6 +69,10 @@ const Example = () => {
       {
         accessorKey: 'Total', //normal accessorKey
         header: 'Total',
+      },
+      {
+        accessorKey: 'Date', //normal accessorKey
+        header: 'Date',
       },
     ],
     [],

@@ -13,6 +13,8 @@ import Tables from '../forms/Tables';
 import { LogoLink } from '../headers/light';
 import chessHorse from '../../images/chess-horse.svg';
 import SimpleFiveColumn from '../footers/SimpleFiveColumn';
+import { PrimaryButton as PrimaryButtonBase } from '../misc/Buttons';
+
 
 const Row = tw.div`flex`;
 const NavRow = tw(Row)`flex flex-col lg:flex-row items-center justify-between`;
@@ -27,6 +29,7 @@ const Description = tw(SectionDescription)`w-full text-center`;
 const Column = tw.div`flex flex-col items-center`;
 const HeaderContent = tw.div``;
 
+const SubmitButton = tw(PrimaryButtonBase)`inline-block mt-8`;
 const FAQSContainer = tw.dl`mt-12 max-w-4xl relative`;
 const FAQ = tw.div`cursor-pointer select-none mt-5 px-8 sm:px-10 py-5 sm:py-4 rounded-lg text-gray-800 hover:text-gray-900 bg-gray-200 hover:bg-gray-300 transition duration-300`;
 const Question = tw.dt`flex justify-between items-center`;
@@ -52,6 +55,9 @@ export default ({
   subheading = "FAQS",
   heading = "Your Profile",
   description = "Match History",
+                  submitButtonText = "Withdraw", formAction1 = "#1", formMethod4 = "get4",
+                  submitButtonText1 = "Deposit", formAction2 = "#2", formMethod5 = "get5",
+                  submitButtonText2 = "View NFT", formAction3 = "#3", formMethod6 = "get6",
   faqs = [
     {
       question: "What is my total win/loss record?",
@@ -93,7 +99,7 @@ export default ({
         <Column>
           <HeaderContent>
             <Heading>{heading}</Heading>
-            {description && <Description style={{ marginLeft: '60px', }}>{description}</Description>}
+            {description && <Description style={{ marginLeft: '150px', }}>{description}</Description>}
             <Tables/>
           </HeaderContent>
           <FAQSContainer>
@@ -134,6 +140,9 @@ export default ({
             ))}
           </FAQSContainer>
         </Column>
+        <SubmitButton type="submit">{submitButtonText}</SubmitButton>
+        <SubmitButton style={{ marginLeft: '400px' }} type="submit">{submitButtonText1}</SubmitButton>
+        <SubmitButton style={{ marginLeft: '400px' }} type="submit">{submitButtonText2}</SubmitButton>
       </ContentWithPaddingXl>
       <DecoratorBlob1/>
       <DecoratorBlob2 />
